@@ -45,6 +45,152 @@ img{
 /* ===================================
    NAVBAR
 =================================== */
+.navbar-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.nav-action{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+
+    min-width:92px;
+    height:40px;
+
+    padding:0 16px;
+
+    border:1.5px solid #222;
+    border-radius:999px;
+
+    background:#fff;
+    color:#222;
+
+    font-size:15px;
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:.25s;
+    cursor:pointer;
+}
+
+.nav-action i{
+    font-size:16px;
+}
+/* ===== MENU ===== */
+
+.navbar-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.navbar-brand img{
+    width:48px;
+    height:48px;
+}
+
+.navbar-brand span{
+    font-weight:700;
+}
+
+.navbar-tools{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-left:auto;
+    margin-right:20px;
+}
+
+.tool-btn{
+    width:46px;
+    height:46px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border:none;
+    border-radius:50%;
+
+    background:transparent;
+    color:#222;
+
+    text-decoration:none;
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.tool-btn i{
+    font-size:26px;
+}
+
+.tool-btn:hover{
+    background:#f3f3f3;
+}
+
+.tool-btn.playing{
+    color:#198754;
+}
+
+/* TELEFON */
+
+@media (max-width:991px){
+
+    .navbar-brand span{
+        display:none;
+    }
+
+    .navbar-brand img{
+        width:44px;
+        height:44px;
+    }
+
+    /* ikony idealnie na środku */
+    .navbar-tools{
+
+        position:absolute;
+
+        left:50%;
+        transform:translateX(-50%);
+
+        margin:0;
+        gap:14px;
+
+    }
+
+    .tool-btn{
+
+        width:44px;
+        height:44px;
+
+    }
+
+    .tool-btn i{
+        font-size:24px;
+    }
+
+}
+.nav-action:hover{
+    background:#f5f5f5;
+    color:#222;
+}
+
+/* gdy gra hymn */
+
+.nav-action.playing{
+    background:#198754;
+    border-color:#198754;
+    color:#fff;
+}
+
+.nav-action.playing i{
+    color:#fff;
+}
 
 .navbar{
 
@@ -888,58 +1034,279 @@ footer hr{
     }
 
 }
-/* ======================
-   PAGE HEADER
-====================== */
+.matchday-card{
 
-.page-header {
+    padding:90px 0;
 
-    padding: 170px 0 80px;
-
-    background: linear-gradient(135deg,#001d56,#003b8f);
+    background:linear-gradient(135deg,#0d6efd,#084298);
 
     color:#fff;
+
+}
+
+.matchday-header{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.matchday-header span{
+
+    display:inline-block;
+
+    padding:8px 20px;
+
+    border-radius:40px;
+
+    background:rgba(255,255,255,.15);
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.matchday-header h2{
+
+    margin-top:20px;
+
+    font-size:44px;
+
+    font-weight:900;
+
+}
+
+.matchday-box{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:80px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:30px;
+
+    padding:50px;
+
+    backdrop-filter:blur(10px);
+
+}
+
+.team-card{
+
+    text-align:center;
+
+    width:250px;
+
+}
+
+.team-card img{
+
+    width:130px;
+
+    margin:auto;
+
+    transition:.3s;
+
+}
+
+.team-card img:hover{
+
+    transform:scale(1.08);
+
+}
+
+.team-card h3{
+
+    margin-top:25px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+}
+
+.match-center{
 
     text-align:center;
 
 }
 
-.page-header span{
+.vs-circle{
 
-    display:inline-block;
+    width:120px;
 
-    background:#ffffff20;
-
-    padding:8px 18px;
-
-    border-radius:30px;
-
-    font-weight:700;
-
-    margin-bottom:20px;
-
-    letter-spacing:1px;
-
-}
-
-.page-header h1{
-
-    font-size:52px;
-
-    font-weight:800;
-
-    margin-bottom:15px;
-
-}
-
-.page-header p{
-
-    max-width:650px;
+    height:120px;
 
     margin:auto;
 
-    opacity:.9;
+    border-radius:50%;
+
+    background:#fff;
+
+    color:#0d6efd;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:48px;
+
+    font-weight:900;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.match-date{
+
+    margin-top:25px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.match-hour{
 
     font-size:18px;
+
+    opacity:.9;
+
+}
+
+.stadium{
+
+    text-align:center;
+
+    margin-top:35px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.match-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:40px;
+
+}
+
+@media(max-width:991px){
+
+    .matchday-box{
+
+        gap:40px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .matchday-box{
+
+        flex-direction:column;
+
+        padding:40px 20px;
+
+    }
+
+    .team-card{
+
+        width:100%;
+
+    }
+
+    .team-card img{
+
+        width:100px;
+
+    }
+
+    .team-card h3{
+
+        font-size:24px;
+
+    }
+
+    .vs-circle{
+
+        width:90px;
+
+        height:90px;
+
+        font-size:36px;
+
+    }
+
+    .match-buttons{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .match-buttons .btn{
+
+        width:240px;
+
+    }
+@media (max-width:991px){
+
+    .navbar-actions{
+        margin-right:12px;
+    }
+
+    .nav-action{
+
+        min-width:84px;
+        height:38px;
+        padding:0 14px;
+        font-size:14px;
+
+    }
+
+}
+@media (max-width: 991px){
+
+    .nav-action{
+        width:42px;
+        min-width:42px;
+        height:42px;
+        padding:0;
+        border-radius:50%;
+    }
+
+    .nav-action span{
+        display:none;
+    }
+
+    .nav-action i{
+        margin:0;
+        font-size:18px;
+    }
+
+    .navbar-actions{
+        gap:8px;
+        margin-left:auto;
+    }
 
 }
