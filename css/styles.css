@@ -888,3 +888,58 @@ footer hr{
     }
 
 }
+/* ======================
+   PAGE HEADER
+====================== */
+
+.page-header {
+
+    padding: 170px 0 80px;
+
+    background: linear-gradient(135deg,#001d56,#003b8f);
+
+    color:#fff;
+
+    text-align:center;
+
+}
+
+.page-header span{
+
+    display:inline-block;
+
+    background:#ffffff20;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+    letter-spacing:1px;
+
+}
+
+.page-header h1{
+
+    font-size:52px;
+
+    font-weight:800;
+
+    margin-bottom:15px;
+
+}
+
+.page-header p{
+
+    max-width:650px;
+
+    margin:auto;
+
+    opacity:.9;
+
+    font-size:18px;
+
+}
