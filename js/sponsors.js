@@ -8,7 +8,18 @@ async function loadSponsors(apiUrl, containerId) {
 
     if (!track) return;
 
+    // Ustalenie odpowiedniego loadera
+    const loaderId = containerId === "matchdaySponsors"
+        ? "matchdayLoader"
+        : "clubLoader";
+
+    const loader = document.getElementById(loaderId);
+
     try {
+
+        // Pokazujemy loader
+        if (loader) loader.style.display = "block";
+        track.style.display = "none";
 
         track.innerHTML = "";
 
@@ -27,12 +38,28 @@ async function loadSponsors(apiUrl, containerId) {
 
         });
 
-        // Duplikujemy logotypy dla płynnej animacji
-        track.innerHTML += track.innerHTML;
+        // Duplikujemy tylko gdy jest więcej niż jeden sponsor
+        if (sponsors.length > 1) {
+
+            track.innerHTML += track.innerHTML;
+            track.classList.remove("single-logo");
+
+        } else {
+
+            track.classList.add("single-logo");
+
+        }
+
+        // Chowamy loader i pokazujemy sponsorów
+        if (loader) loader.style.display = "none";
+        track.style.display = "flex";
 
     } catch (error) {
 
         console.error("Błąd ładowania sponsorów:", error);
+
+        // Chowamy loader również w razie błędu
+        if (loader) loader.style.display = "none";
 
     }
 

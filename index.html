@@ -40,6 +40,7 @@
             <span class="ms-2">PIAST KOBYLNICA</span>
         </a>
 
+        
         <!-- Ikony -->
         <div class="navbar-tools">
 
@@ -84,9 +85,10 @@
             <span>SPONSOR DNIA MECZOWEGO</span>
 
         </div>
-
+        
         <div class="logo-slider">
-            <div class="logo-track" id="matchdaySponsors"></div>
+            <div class="loader" id="matchdayLoader"></div>
+            <div class="logo-track" id="matchdaySponsors" style="display:none;"></div>
         </div>
 
     </div>
@@ -111,9 +113,12 @@
 
             <div class="matchday-box">
 
+                <div class="loader" id="posterLoader"></div>
+
                 <img id="matchPoster"
                     src=""
-                    alt="Plakat meczu">
+                    alt="Plakat meczu"
+                    style="display:none;">
 
             </div>
 
@@ -150,7 +155,8 @@
         </div>
 
         <div class="logo-slider">
-            <div class="logo-track" id="clubSponsors"></div>
+            <div class="loader" id="clubLoader"></div>
+            <div class="logo-track" id="clubSponsors" style="display:none;"></div>
         </div>
 
     </div>
