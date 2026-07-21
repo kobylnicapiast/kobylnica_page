@@ -669,7 +669,7 @@ section{
 @media (max-width:768px){
 
     body{
-        padding:15px 0;
+        padding-top:60px;
     }
 
     .container{
@@ -961,25 +961,29 @@ footer hr{
    KONIEC PLIKU
 =================================== */
 
-/* Jeden sponsor dnia */
-
+/* Sponsor dnia */
 .logo-track.single-logo{
 
-    width:100%;
-    justify-content:flex-start;
+    animation:none;
 
-    animation:singleLogo 18s linear infinite;
+}
+
+.logo-track.single-logo img{
+
+    display:block;
+    will-change:transform;
+    animation:singleLogo 12s linear infinite;
 
 }
 
 @keyframes singleLogo{
 
     0%{
-        transform:translateX(60%);
+        transform:translateX(calc(100vw + 150px));
     }
 
     100%{
-        transform:translateX(-220px);
+        transform:translateX(-300px);
     }
 
 }
