@@ -399,7 +399,6 @@ section{
 }
 
 .logo-track{
-
     display:flex;
     align-items:center;
     flex-wrap:nowrap;
@@ -410,6 +409,12 @@ section{
 
     animation:scrollLogos 30s linear infinite;
 
+    opacity:0;
+    transition:opacity .35s ease;
+}
+
+.logo-track.loaded{
+    opacity:1;
 }
 
 .logo-track img{
@@ -421,7 +426,7 @@ section{
 
     object-fit:contain;
 
-    margin:0 35px;
+    margin:0 22px;
 
     filter:none;
     opacity:1;
@@ -655,6 +660,100 @@ section{
    RESPONSYWNOŚĆ
 =================================== */
 
+.table-responsive{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    border-radius:18px;
+}
+
+@media (max-width:768px){
+
+    body{
+        padding:15px 0;
+    }
+
+    .container{
+        padding-left:12px;
+        padding-right:12px;
+    }
+
+    .header{
+        padding:22px 18px;
+        margin-bottom:20px;
+        border-radius:16px;
+    }
+
+    .header h1{
+        font-size:1.7rem;
+    }
+
+    .header p{
+        font-size:.9rem;
+    }
+
+    .card{
+        padding:12px !important;
+        border-radius:16px;
+    }
+
+    .btn{
+        width:100%;
+        margin-bottom:15px;
+    }
+
+    .table{
+        font-size:.82rem;
+    }
+
+    .table th,
+    .table td{
+        padding:.55rem .45rem;
+        white-space:nowrap;
+    }
+
+    .table td:nth-child(2),
+    .table th:nth-child(2){
+        min-width:180px;
+        text-align:left;
+    }
+
+    .table td:first-child,
+    .table th:first-child{
+        min-width:55px;
+    }
+
+    .table td:last-child,
+    .table th:last-child{
+        min-width:70px;
+    }
+
+}
+
+@media (max-width:576px){
+
+    .header h1{
+        font-size:1.45rem;
+    }
+
+    .header p{
+        font-size:.85rem;
+    }
+
+    .table{
+        font-size:.78rem;
+    }
+
+    .table th,
+    .table td{
+        padding:.45rem .35rem;
+    }
+
+}
+
+/* ===================================
+   RESPONSYWNOŚĆ
+=================================== */
+
 @media(max-width:991px){
 
     .matchday-box{
@@ -876,7 +975,7 @@ footer hr{
 @keyframes singleLogo{
 
     0%{
-        transform:translateX(100%);
+        transform:translateX(60%);
     }
 
     100%{

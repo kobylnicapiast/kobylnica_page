@@ -51,8 +51,19 @@ async function loadSponsors(apiUrl, containerId) {
         }
 
         // Chowamy loader i pokazujemy sponsorów
-        if (loader) loader.style.display = "none";
         track.style.display = "flex";
+
+        // najpierw pokaż logo
+        track.classList.add("loaded");
+
+        // po chwili usuń spinner
+        setTimeout(() => {
+
+            if(loader){
+                loader.style.display = "none";
+            }
+
+        },100);
 
     } catch (error) {
 
