@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
 
 <meta charset="UTF-8">
@@ -14,16 +15,25 @@
 
 body{
     background:#edf2f7;
+    font-family:system-ui,-apple-system,sans-serif;
 }
+
+/* ==========================
+   HEADER
+========================== */
 
 .header{
     background:linear-gradient(135deg,#0d6efd,#003b99);
     color:#fff;
-    border-radius:20px;
+    border-radius:22px;
     padding:35px;
     text-align:center;
     margin-bottom:30px;
     box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.header h1{
+    font-weight:800;
 }
 
 .card{
@@ -32,17 +42,23 @@ body{
     box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
+/* ==========================
+   TABELA PC
+========================== */
+
+.desktop-table{
+    display:block;
+}
+
 .table{
-    border-radius:15px;
-    overflow:hidden;
+    margin-bottom:0;
 }
 
 .table thead th{
     background:#0d6efd;
-    color:white;
-    text-align:center;
-    vertical-align:middle;
+    color:#fff;
     white-space:nowrap;
+    text-align:center;
 }
 
 .table td{
@@ -54,8 +70,7 @@ body{
 }
 
 .table tbody tr:hover{
-    background:#f5f9ff;
-    transform:scale(1.01);
+    background:#f4f8ff;
 }
 
 .table td:nth-child(2){
@@ -63,10 +78,17 @@ body{
     font-weight:600;
 }
 
+.position{
+    font-weight:700;
+}
+
+.points{
+    color:#198754;
+    font-weight:700;
+}
+
 .team-highlight{
-    background:#d8eaff !important;
-    color:#003b99;
-    font-weight:bold;
+    background:#d9ebff!important;
 }
 
 .team-highlight td{
@@ -74,13 +96,175 @@ body{
     border-bottom:2px solid #0d6efd;
 }
 
-.points{
-    font-weight:bold;
-    color:#198754;
+/* ==========================
+   WIDOK MOBILNY
+========================== */
+
+.mobile-table{
+    display:none;
 }
 
-.position{
-    font-weight:bold;
+.team-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:16px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+    animation:fade .35s ease;
+
+}
+
+.team-card.piast{
+
+    border-left:6px solid #0d6efd;
+
+    background:#eef6ff;
+
+}
+
+.team-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+
+}
+
+.team-title h5{
+
+    margin:0;
+
+    font-weight:800;
+
+    font-size:1.05rem;
+
+}
+
+.team-title span{
+
+    font-size:1.25rem;
+
+    font-weight:800;
+
+    color:#0d6efd;
+
+}
+
+.team-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+}
+
+.info{
+
+    background:#f7f9fc;
+
+    border-radius:12px;
+
+    padding:10px;
+
+}
+
+.info small{
+
+    display:block;
+
+    color:#6c757d;
+
+}
+
+.info strong{
+
+    font-size:1rem;
+
+}
+
+.loader{
+
+    text-align:center;
+
+    padding:50px;
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   RESPONSYWNOŚĆ
+========================== */
+
+@media(max-width:768px){
+
+    .desktop-table{
+
+        display:none;
+
+    }
+
+    .mobile-table{
+
+        display:block;
+
+    }
+
+    .container{
+
+        padding-left:12px;
+        padding-right:12px;
+
+    }
+
+    .header{
+
+        padding:22px;
+
+    }
+
+    .header h1{
+
+        font-size:1.6rem;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+    }
+
 }
 
 </style>
@@ -89,65 +273,91 @@ body{
 
 <body>
 
-<div class="container py-5">
+<div class="container py-4">
 
-    <a href="index.html" class="btn btn-outline-primary rounded-pill px-4 mb-4">
-        <i class="bi bi-arrow-left"></i>
-        Powrót
-    </a>
+<a href="index.html" class="btn btn-outline-primary rounded-pill mb-4">
+<i class="bi bi-arrow-left"></i>
+Powrót
+</a>
 
-    <div class="header">
+<div class="header">
 
-        <h1>
-            <i class="bi bi-trophy-fill"></i>
-            Tabela Ligowa
-        </h1>
+<h1>
+<i class="bi bi-trophy-fill"></i>
+Tabela Ligowa
+</h1>
 
-        <p class="mb-0">
-            Aktualna tabela pobierana z Google Sheets
-        </p>
+<p class="mb-0">
 
-    </div>
+Aktualna tabela pobierana z Google Sheets
 
-    <div class="card p-4">
+</p>
 
-        <div class="table-responsive">
+</div>
 
-            <table class="table table-hover align-middle text-center">
+<!-- KOMPUTER -->
 
-                <thead>
+<div class="card p-4 desktop-table">
 
-                    <tr>
-                        <th>Poz.</th>
-                        <th>Drużyna</th>
-                        <th>M</th>
-                        <th>Pkt</th>
-                        <th>W</th>
-                        <th>R</th>
-                        <th>P</th>
-                        <th>Gole</th>
-                        <th>Bilans</th>
-                    </tr>
+<div class="table-responsive">
 
-                </thead>
+<table class="table table-hover align-middle text-center">
 
-                <tbody id="tabela">
+<thead>
 
-                    <tr>
-                        <td colspan="9" class="text-center py-5">
-                            <div class="spinner-border text-primary"></div>
-                            <br><br>
-                            Ładowanie tabeli...
-                        </td>
-                    </tr>
+<tr>
 
-                </tbody>
+<th>Poz.</th>
+<th>Drużyna</th>
+<th>M</th>
+<th>Pkt</th>
+<th>W</th>
+<th>R</th>
+<th>P</th>
+<th>Gole</th>
+<th>Bilans</th>
 
-            </table>
+</tr>
 
-        </div>
+</thead>
 
-    </div>
+<tbody id="tabelaDesktop">
+
+<tr>
+
+<td colspan="9" class="loader">
+
+<div class="spinner-border text-primary"></div>
+
+<br><br>
+
+Ładowanie...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- TELEFON -->
+
+<div id="tabelaMobile" class="mobile-table">
+
+<div class="loader">
+
+<div class="spinner-border text-primary"></div>
+
+<br><br>
+
+Ładowanie...
+
+</div>
 
 </div>
 
@@ -160,9 +370,12 @@ fetch(csvUrl)
 .then(text=>{
 
     const rows=text.trim().split("\n");
-    const tbody=document.getElementById("tabela");
 
-    tbody.innerHTML="";
+    const desktop=document.getElementById("tabelaDesktop");
+    const mobile=document.getElementById("tabelaMobile");
+
+    desktop.innerHTML="";
+    mobile.innerHTML="";
 
     rows.forEach((row,index)=>{
 
@@ -183,22 +396,112 @@ fetch(csvUrl)
         const goleMinus=cols[8];
         const bilans=cols[9];
 
-        const klasa=druzyna.toUpperCase().includes("PIAST")
-            ? "team-highlight"
-            : "";
+        const piast=druzyna.toUpperCase().includes("PIAST");
 
-        tbody.innerHTML+=`
-        <tr class="${klasa}">
+        /* ===== KOMPUTER ===== */
+
+        desktop.innerHTML+=`
+
+        <tr class="${piast ? "team-highlight":""}">
+
             <td class="position">${pozycja}</td>
+
             <td>${druzyna}</td>
+
             <td>${mecze}</td>
+
             <td class="points">${punkty}</td>
+
             <td>${wygrane}</td>
+
             <td>${remisy}</td>
+
             <td>${porazki}</td>
+
             <td>${golePlus} : ${goleMinus}</td>
+
             <td>${bilans}</td>
+
         </tr>
+
+        `;
+
+        /* ===== TELEFON ===== */
+
+        mobile.innerHTML+=`
+
+        <div class="team-card ${piast ? "piast":""}">
+
+            <div class="team-title">
+
+                <h5>${druzyna}</h5>
+
+                <span>#${pozycja}</span>
+
+            </div>
+
+            <div class="team-grid">
+
+                <div class="info">
+
+                    <small>Punkty</small>
+
+                    <strong>${punkty}</strong>
+
+                </div>
+
+                <div class="info">
+
+                    <small>Mecze</small>
+
+                    <strong>${mecze}</strong>
+
+                </div>
+
+                <div class="info">
+
+                    <small>Wygrane</small>
+
+                    <strong>${wygrane}</strong>
+
+                </div>
+
+                <div class="info">
+
+                    <small>Remisy</small>
+
+                    <strong>${remisy}</strong>
+
+                </div>
+
+                <div class="info">
+
+                    <small>Porażki</small>
+
+                    <strong>${porazki}</strong>
+
+                </div>
+
+                <div class="info">
+
+                    <small>Bilans</small>
+
+                    <strong>${bilans}</strong>
+
+                </div>
+
+                <div class="info" style="grid-column:1 / span 2;">
+
+                    <small>Gole</small>
+
+                    <strong>${golePlus} : ${goleMinus}</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
         `;
 
     });
@@ -206,14 +509,36 @@ fetch(csvUrl)
 })
 .catch(error=>{
 
-    document.getElementById("tabela").innerHTML=`
+    document.getElementById("tabelaDesktop").innerHTML=`
+
         <tr>
+
             <td colspan="9" class="text-danger text-center py-5">
+
                 <i class="bi bi-exclamation-triangle-fill fs-1"></i>
+
                 <br><br>
+
                 Nie udało się pobrać tabeli.
+
             </td>
+
         </tr>
+
+    `;
+
+    document.getElementById("tabelaMobile").innerHTML=`
+
+        <div class="alert alert-danger text-center">
+
+            <i class="bi bi-exclamation-triangle-fill"></i>
+
+            <br><br>
+
+            Nie udało się pobrać tabeli.
+
+        </div>
+
     `;
 
     console.error(error);
