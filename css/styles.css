@@ -1,0 +1,838 @@
+/* ===================================
+   PIAST KOBYLNICA
+   styles.css
+   CZĘŚĆ 1/3
+=================================== */
+
+/* ===================================
+   ZMIENNE
+=================================== */
+
+:root{
+
+    --primary:#0d6efd;
+    --primary-dark:#084298;
+    --light:#f8f9fa;
+    --dark:#212529;
+    --gray:#6c757d;
+    --white:#ffffff;
+
+}
+
+/* ===================================
+   RESET
+=================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background:#fff;
+    color:var(--dark);
+    overflow-x:hidden;
+
+    padding-top:70px;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+img{
+
+    max-width:100%;
+    display:block;
+
+}
+
+/* ===================================
+   NAVBAR
+=================================== */
+
+.navbar{
+
+    background:#fff;
+    padding:18px 0;
+
+    box-shadow:0 3px 20px rgba(0,0,0,.05);
+
+}
+
+.navbar-brand{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-weight:800;
+    font-size:1.25rem;
+    color:var(--dark);
+
+}
+
+.navbar-brand img{
+
+    width:55px;
+    height:55px;
+
+}
+
+.navbar-tools{
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    margin-left:auto;
+    margin-right:20px;
+
+}
+
+/* ===================================
+   IKONY MENU
+=================================== */
+
+.tool-btn{
+
+    width:46px;
+    height:46px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border:none;
+    border-radius:50%;
+
+    background:transparent;
+
+    color:#222;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.tool-btn i{
+
+    font-size:26px;
+
+}
+
+.tool-btn:hover{
+
+    background:#f3f3f3;
+
+}
+
+.tool-btn.playing{
+
+    color:#198754;
+
+}
+
+/* Burger SVG */
+
+.tool-icon{
+
+    width:28px;
+    height:28px;
+
+    display:block;
+
+}
+
+/* ===================================
+   Plakat
+=================================== */
+
+.matchday-box{
+    overflow:hidden;
+    padding:0;
+}
+
+#matchPoster{
+    width:100%;
+    display:block;
+    border-radius:24px;
+    object-fit:cover;
+}
+
+/* ===================================
+   WSPÓLNE SEKCJE
+=================================== */
+
+section{
+
+    padding:100px 0;
+
+}
+
+.section-title{
+
+    text-align:center;
+    margin-bottom:60px;
+
+}
+
+.section-title span{
+
+    color:var(--primary);
+
+    font-size:.9rem;
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.section-title h2{
+
+    font-size:2.6rem;
+    font-weight:800;
+
+    margin-top:15px;
+
+}
+
+.section-title p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    color:var(--gray);
+
+    line-height:1.8;
+
+}
+
+/* ===================================
+   RESPONSYWNOŚĆ MENU
+=================================== */
+@media (max-width:768px){
+
+    body{
+
+        padding-top:85px;
+
+    }
+
+}
+
+@media (max-width:991px){
+
+    .navbar{
+
+        padding:15px 0;
+
+    }
+
+    .navbar-brand span{
+
+        display:none;
+
+    }
+
+    .navbar-brand img{
+
+        width:44px;
+        height:44px;
+
+    }
+
+    .navbar-tools{
+
+        position:absolute;
+
+        left:50%;
+        transform:translateX(-50%);
+
+        margin:0;
+
+        gap:14px;
+
+    }
+
+    .tool-btn{
+
+        width:44px;
+        height:44px;
+
+    }
+
+    .tool-btn i{
+
+        font-size:24px;
+
+    }
+
+    .tool-icon{
+
+        width:28px;
+        height:28px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    section{
+
+        padding:70px 0;
+
+    }
+
+    .section-title h2{
+
+        font-size:2rem;
+
+    }
+
+}
+
+@media (max-width:576px){
+
+    .navbar-brand span{
+
+        display:none;
+
+    }
+
+    .section-title h2{
+
+        font-size:1.7rem;
+
+    }
+
+}
+
+/* ===================================
+   SPONSORZY
+=================================== */
+
+.partners{
+
+    background:#f8fbff;
+    padding:40px 0;
+
+}
+
+.club-partners{
+
+    background:#f8fbff;
+    padding:40px 0;
+
+}
+
+.section-title{
+
+    text-align:center;
+    margin-bottom:20px;
+
+}
+
+.section-title span{
+
+    color:var(--primary);
+
+    font-size:.9rem;
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.logo-slider{
+
+    overflow:hidden;
+    position:relative;
+
+    width:100%;
+
+    margin-top:10px;
+
+}
+
+.logo-track{
+
+    display:flex;
+    align-items:center;
+    flex-wrap:nowrap;
+
+    width:max-content;
+
+    will-change:transform;
+
+    animation:scrollLogos 30s linear infinite;
+
+}
+
+.logo-track img{
+
+    flex-shrink:0;
+
+    width:150px;
+    height:70px;
+
+    object-fit:contain;
+
+    margin:0 35px;
+
+    filter:none;
+    opacity:1;
+
+    transition:.3s;
+
+}
+
+.logo-track img:hover{
+
+    transform:scale(1.08);
+
+}
+@keyframes scrollLogos{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+
+/* ===================================
+   DZIEŃ MECZOWY
+=================================== */
+
+.matchday-card{
+
+    padding:90px 0;
+
+    background:linear-gradient(135deg,#0d6efd,#084298);
+
+    color:#fff;
+
+}
+
+.matchday-header{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.matchday-header span{
+
+    display:inline-block;
+
+    padding:8px 20px;
+
+    border-radius:40px;
+
+    background:rgba(255,255,255,.15);
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.matchday-header h2{
+
+    margin-top:20px;
+
+    font-size:44px;
+
+    font-weight:900;
+
+}
+
+.matchday-box{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:80px;
+
+    padding:50px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+}
+
+.team-card{
+
+    width:250px;
+
+    text-align:center;
+
+}
+
+.team-card img{
+
+    width:130px;
+
+    margin:auto;
+
+    transition:.3s;
+
+}
+
+.team-card img:hover{
+
+    transform:scale(1.08);
+
+}
+
+.team-card h3{
+
+    margin-top:25px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+}
+
+.match-center{
+
+    text-align:center;
+
+}
+
+.vs-circle{
+
+    width:120px;
+    height:120px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#fff;
+    color:var(--primary);
+
+    font-size:48px;
+    font-weight:900;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.match-date{
+
+    margin-top:25px;
+
+    font-size:22px;
+    font-weight:700;
+
+}
+
+.match-hour{
+
+    font-size:18px;
+
+    opacity:.9;
+
+}
+
+.stadium{
+
+    margin-top:35px;
+
+    text-align:center;
+
+    font-size:22px;
+    font-weight:700;
+
+}
+
+.match-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:40px;
+
+}
+
+.match-buttons .btn{
+
+    border-radius:50px;
+
+    padding:14px 34px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.match-buttons .btn-primary{
+
+    background:var(--primary);
+
+    border:none;
+
+}
+
+.match-buttons .btn-primary:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+.match-buttons .btn-outline-light:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ===================================
+   RESPONSYWNOŚĆ
+=================================== */
+
+@media(max-width:991px){
+
+    .matchday-box{
+
+        gap:40px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .matchday-box{
+
+        flex-direction:column;
+
+        padding:40px 20px;
+
+    }
+
+    .team-card{
+
+        width:100%;
+
+    }
+
+    .team-card img{
+
+        width:100px;
+
+    }
+
+    .team-card h3{
+
+        font-size:24px;
+
+    }
+
+    .vs-circle{
+
+        width:90px;
+        height:90px;
+
+        font-size:36px;
+
+    }
+
+    .match-buttons{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .match-buttons .btn{
+
+        width:240px;
+
+    }
+
+}
+/* ===================================
+   FOOTER
+=================================== */
+
+footer{
+
+    background:#0f172a;
+    color:#fff;
+
+    padding:70px 0 25px;
+
+}
+
+footer h4{
+
+    font-size:1.6rem;
+    font-weight:800;
+
+    margin-bottom:15px;
+
+}
+
+footer p{
+
+    color:#cbd5e1;
+    line-height:1.8;
+
+}
+
+footer a{
+
+    width:46px;
+    height:46px;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-left:12px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+    font-size:1.2rem;
+
+    transition:.3s;
+
+}
+
+footer a:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    transform:translateY(-4px);
+
+}
+
+footer hr{
+
+    margin:40px 0 20px;
+
+    border-color:rgba(255,255,255,.15);
+
+}
+
+.copyright{
+
+    margin:0;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    font-size:.95rem;
+
+}
+
+/* ===================================
+   SCROLLBAR
+=================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/* ===================================
+   RESPONSYWNOŚĆ FOOTERA
+=================================== */
+
+@media(max-width:768px){
+
+    footer{
+
+        text-align:center;
+
+    }
+
+    footer .text-lg-end{
+
+        margin-top:30px;
+
+        text-align:center !important;
+
+    }
+
+    footer a{
+
+        margin:0 6px;
+
+    }
+
+}
+
+/* ===================================
+   KONIEC PLIKU
+=================================== */
