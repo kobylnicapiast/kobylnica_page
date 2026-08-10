@@ -1,87 +1,70 @@
-const anthemBtn = document.getElementById("anthemBtn");
-const anthemAudio = document.getElementById("anthemAudio");
-
-if (anthemBtn && anthemAudio) {
-
-    anthemBtn.addEventListener("click", () => {
-
-        if (anthemAudio.paused) {
-
-            anthemAudio.play();
-            anthemBtn.classList.add("playing");
-
-        } else {
-
-            anthemAudio.pause();
-            anthemBtn.classList.remove("playing");
-
-        }
-
-    });
-
-    anthemAudio.addEventListener("ended", () => {
-
-        anthemBtn.classList.remove("playing");
-        anthemAudio.currentTime = 0;
-
-    });
-
-}
-
 /* ===========================================
-   PLAKAT MECZU Z GOOGLE DRIVE
-=========================================== */
-
-/* ===========================================
-   PLAKAT MECZU Z GOOGLE DRIVE
+   PLAKATY MECZU Z GOOGLE DRIVE
 =========================================== */
 
 const MATCH_POSTER_API =
-    "https://script.google.com/macros/s/AKfycbxgKMeiCqAO0UteYOWWQzJfqskYSGQxkxJq_-RiOc5OH1tm74XDNwftfu1hVDJGARrA/exec";
+"https://script.google.com/macros/s/AKfycbzkpcWE3QdByjQwD_qBCXm1cS0efw7t0VRemzIle12omIfqADxadq47mJTp3CcpIpmO/exec";
 
-const matchPoster = document.getElementById("matchPoster");
+const matchPosters = document.getElementById("matchPosters");
 const posterLoader = document.getElementById("posterLoader");
 
-if (matchPoster) {
+if (matchPosters) {
 
     // pokazujemy loader
-    if (posterLoader) posterLoader.style.display = "block";
-    matchPoster.style.display = "none";
+    if (posterLoader) {
+        posterLoader.style.display = "block";
+    }
+
+    matchPosters.style.display = "none";
 
     fetch(MATCH_POSTER_API)
         .then(response => response.json())
         .then(data => {
 
-            if (data.success) {
+            if (data.success && data.images && data.images.length > 0) {
 
-                // gdy obraz się załaduje
-                matchPoster.src = data.image + "&t=" + Date.now();
+                // czyścimy kontener
+                matchPosters.innerHTML = "";
 
-                setTimeout(() => {
+                // tworzymy obraz dla każdego pliku z Google Drive
+                data.images.forEach((poster, index) => {
 
-                    if (posterLoader)
-                        posterLoader.style.display = "none";
+                    const img = document.createElement("img");
 
-                    matchPoster.style.display = "block";
+                    img.src = poster.image + "&t=" + Date.now();
+                    img.alt = poster.name || "Plakat meczu";
+                    img.loading = index === 0 ? "eager" : "lazy";
 
-                }, 300);
+                    matchPosters.appendChild(img);
+
+                });
+
+                // chowamy loader
+                if (posterLoader) {
+                    posterLoader.style.display = "none";
+                }
+
+                // pokazujemy wszystkie plakaty
+                matchPosters.style.display = "flex";
 
             } else {
 
-                if (posterLoader)
+                if (posterLoader) {
                     posterLoader.style.display = "none";
+                }
 
-                console.error("Nie znaleziono plakatu.");
+                console.log("Brak plakatów w folderze Google Drive.");
 
             }
 
         })
         .catch(error => {
 
-            if (posterLoader)
+            if (posterLoader) {
                 posterLoader.style.display = "none";
+            }
 
-            console.error("Błąd pobierania plakatu:", error);
+            console.error("Błąd pobierania plakatów:", error);
 
         });
 

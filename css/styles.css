@@ -74,6 +74,23 @@ img{
 
 }
 
+.match-posters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.match-posters img {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 16px;
+    object-fit: contain;
+}
+
 .navbar-brand{
 
     display:flex;
@@ -986,4 +1003,35 @@ footer hr{
         transform:translateX(-300px);
     }
 
+}
+/* ===================================
+   WIĘKSZE LOGO - SPONSOR DNIA MECZOWEGO
+=================================== */
+
+#matchdaySponsors img {
+    width: 210px;
+    height: 110px;
+    object-fit: contain;
+    margin: 0 30px;
+}
+
+@media (max-width: 768px) {
+    #matchdaySponsors img {
+        width: 170px;
+        height: 95px;
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    #matchdaySponsors img {
+        width: 150px;
+        height: 85px;
+        margin: 0 15px;
+    }
+}
+
+/* Wolniejsi sponsorzy klubu */
+#clubSponsors {
+    animation-duration: 50s;
 }

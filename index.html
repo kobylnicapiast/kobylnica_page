@@ -35,12 +35,11 @@
     <div class="container">
 
         <!-- Logo -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
             <img src="assets/profile.png" alt="Logo">
             <span class="ms-2">PIAST KOBYLNICA</span>
         </a>
 
-        
         <!-- Ikony -->
         <div class="navbar-tools">
 
@@ -52,13 +51,13 @@
             </button>
 
             <a href="hymn.html"
-            class="tool-btn"
+            class="tool-btn persistent-link"
             title="Tekst hymnu">
                 <i class="bi bi-file-earmark-text"></i>
             </a>
 
             <a href="menu.html"
-            class="tool-btn"
+            class="tool-btn persistent-link"
             title="Catering klubowy">
 
                 <img src="assets/burger-solid-full.svg"
@@ -115,16 +114,16 @@
 
                 <div class="loader" id="posterLoader"></div>
 
-                <img id="matchPoster"
-                    src=""
-                    alt="Plakat meczu"
+                <div id="matchPosters"
+                    class="match-posters"
                     style="display:none;">
+                </div>
 
             </div>
 
         <div class="match-buttons">
 
-            <a href="#" class="btn btn-primary">
+            <a href="terminarz.html" class="btn btn-primary">
                 Terminarz
             </a>
 
@@ -138,10 +137,6 @@
 
 </section>
 
-<!-- Audio hymnu -->
-<audio id="anthemAudio">
-    <source src="assets/hymn.mp3" type="audio/mpeg">
-</audio>
 <!-- =======================
       SPONSORZY KLUBU
 ======================== -->
@@ -225,6 +220,11 @@
 <!-- JavaScript -->
 <script src="js/sponsors.js?v=8"></script>
 <script src="js/script.js?v=8"></script>
+<audio id="anthemAudio" preload="auto">
+    <source src="assets/hymn.mp3" type="audio/mpeg">
+</audio>
+
+<script src="js/anthem.js"></script>
 
 </body>
 
