@@ -155,12 +155,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!hints.length) return;
 
-    // Losujemy jeden z dostępnych dymków
+    // Losujemy jeden dymek
     const randomIndex = Math.floor(Math.random() * hints.length);
+    const selectedHint = hints[randomIndex];
 
-    // Małe opóźnienie, żeby dymek pojawił się po załadowaniu strony
+    // Pokazujemy po 1 sekundzie
     setTimeout(() => {
-        hints[randomIndex].classList.add("show");
+        selectedHint.classList.add("show");
     }, 1000);
+
+
+    // Kliknięcie gdziekolwiek na stronie zamyka dymek
+    document.addEventListener("click", function () {
+
+        hints.forEach(hint => {
+            hint.classList.remove("show");
+        });
+
+    });
 
 });
