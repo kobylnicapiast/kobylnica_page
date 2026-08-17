@@ -148,3 +148,19 @@ if (matchPosters) {
         });
 
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const hints = document.querySelectorAll(".random-hint");
+
+    if (!hints.length) return;
+
+    // Losujemy jeden z dostępnych dymków
+    const randomIndex = Math.floor(Math.random() * hints.length);
+
+    // Małe opóźnienie, żeby dymek pojawił się po załadowaniu strony
+    setTimeout(() => {
+        hints[randomIndex].classList.add("show");
+    }, 1000);
+
+});
