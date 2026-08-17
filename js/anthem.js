@@ -723,3 +723,35 @@ if (anthemAudio) {
     );
 
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const anthemBtn = document.getElementById("anthemBtn");
+    const anthemHint = document.getElementById("anthemHint");
+
+    if (!anthemBtn || !anthemHint) return;
+
+    // Pokaż dymek po wejściu na stronę
+    setTimeout(() => {
+        anthemHint.classList.add("show");
+    }, 500);
+
+    // Kliknięcie / dotknięcie gdziekolwiek poza ikonką zamyka dymek
+    document.addEventListener("click", function (event) {
+
+        if (!anthemBtn.contains(event.target)) {
+            anthemHint.classList.remove("show");
+        }
+
+    });
+
+    // Obsługa telefonu - dotknięcie ekranu
+    document.addEventListener("touchstart", function (event) {
+
+        if (!anthemBtn.contains(event.target)) {
+            anthemHint.classList.remove("show");
+        }
+
+    }, { passive: true });
+
+});

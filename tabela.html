@@ -43,6 +43,71 @@ body{
 }
 
 /* ==========================
+   SEKCJA TWOJEGO KLUBU
+========================== */
+
+.my-team-section{
+    margin-bottom:30px;
+}
+
+.my-team-title{
+    font-size:1rem;
+    font-weight:800;
+    color:#003b99;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:10px;
+}
+
+.my-team-card{
+    background:linear-gradient(135deg,#003b99,#001f5c);
+    color:#fff;
+    border-radius:18px;
+    padding:20px 24px;
+    box-shadow:0 10px 25px rgba(0,31,92,.30);
+}
+
+.my-team-card .team-name{
+    font-size:1.3rem;
+    font-weight:800;
+}
+
+.my-team-card .position{
+    font-size:1.5rem;
+    font-weight:900;
+}
+
+.my-team-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+    margin-top:18px;
+}
+
+.my-team-info{
+    background:rgba(255,255,255,.12);
+    border-radius:12px;
+    padding:10px;
+    text-align:center;
+}
+
+.my-team-info small{
+    display:block;
+    opacity:.75;
+    font-size:.75rem;
+}
+
+.my-team-info strong{
+    font-size:1.05rem;
+}
+
+.my-team-info.points strong{
+    color:#37e996;
+    font-size:1.25rem;
+    font-weight:800;
+}
+
+/* ==========================
    TABELA PC
 ========================== */
 
@@ -59,6 +124,7 @@ body{
     color:#fff;
     white-space:nowrap;
     text-align:center;
+    border:none;
 }
 
 .table td{
@@ -69,7 +135,7 @@ body{
     transition:.25s;
 }
 
-.table tbody tr:hover{
+.table tbody tr:hover:not(.team-highlight){
     background:#f4f8ff;
 }
 
@@ -83,17 +149,50 @@ body{
 }
 
 .points{
-    color:#198754;
+    color:#37e996;
     font-weight:700;
 }
 
+/* ==========================
+   WYRÓŻNIENIE PIasta
+========================== */
+
 .team-highlight{
-    background:#d9ebff!important;
+    background:linear-gradient(90deg,#003b99,#0056c7)!important;
+    color:#fff!important;
+    font-weight:600;
 }
 
 .team-highlight td{
-    border-top:2px solid #0d6efd;
-    border-bottom:2px solid #0d6efd;
+    background:transparent!important;
+    color:#fff!important;
+    border-top:2px solid #00265f;
+    border-bottom:2px solid #00265f;
+}
+
+.team-highlight .points{
+    color:#37e996!important;
+    font-weight:900;
+}
+
+.team-highlight .position{
+    color:#fff;
+    font-size:1.05rem;
+}
+
+/* ==========================
+   ODSTĘP PRZED PEŁNĄ TABELĄ
+========================== */
+
+.full-table-section{
+    margin-top:35px;
+}
+
+.full-table-title{
+    font-size:1.1rem;
+    font-weight:800;
+    color:#343a40;
+    margin-bottom:12px;
 }
 
 /* ==========================
@@ -122,9 +221,35 @@ body{
 
 .team-card.piast{
 
-    border-left:6px solid #0d6efd;
+    background:linear-gradient(135deg,#003b99,#001f5c);
 
-    background:#eef6ff;
+    color:#fff;
+
+    box-shadow:0 10px 22px rgba(0,31,92,.25);
+
+}
+
+.team-card.piast .info{
+
+    background:rgba(255,255,255,.12);
+
+}
+
+.team-card.piast .info small{
+
+    color:rgba(255,255,255,.75);
+
+}
+
+.team-card.piast .info strong{
+
+    color:#fff;
+
+}
+
+.team-card.piast .team-title span{
+
+    color:#fff;
 
 }
 
@@ -265,6 +390,30 @@ body{
 
     }
 
+    .my-team-card{
+
+        padding:18px;
+
+    }
+
+    .my-team-grid{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+}
+
+/* ==========================
+   DESKTOP - SEKCJA KLUBU
+========================== */
+
+@media(min-width:769px){
+
+    .my-team-grid .wide{
+        grid-column:auto;
+    }
+
 }
 
 </style>
@@ -288,12 +437,49 @@ Tabela Ligowa
 </h1>
 
 <p class="mb-0">
-
 Aktualna tabela sezonu
-
 </p>
 
 </div>
+
+
+<!-- ==========================
+     TWÓJ KLUB
+========================== -->
+
+<div class="my-team-section">
+
+<div class="my-team-title">
+<i class="bi bi-star-fill"></i>
+Nasz klub
+</div>
+
+<div id="myTeamDesktop" class="my-team-card">
+
+<div class="loader">
+<div class="spinner-border"></div>
+<br><br>
+Ładowanie...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ==========================
+     PEŁNA TABELA
+========================== -->
+
+<div class="full-table-section">
+
+<div class="full-table-title">
+
+<i class="bi bi-list-ol"></i>
+Pełna tabela ligowa
+
+</div>
+
 
 <!-- KOMPUTER -->
 
@@ -345,6 +531,7 @@ Aktualna tabela sezonu
 
 </div>
 
+
 <!-- TELEFON -->
 
 <div id="tabelaMobile" class="mobile-table">
@@ -361,21 +548,29 @@ Aktualna tabela sezonu
 
 </div>
 
+</div>
+
+
 <script>
 
 const csvUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vRXfGQ9aSP4daJnc6w3HYy_iuscf_drnik4pjVMNUHla7d144GXncBMiNlZQgdUnEkXmIg-jd1UMXao/pub?output=csv";
 
 fetch(csvUrl)
+
 .then(response=>response.text())
+
 .then(text=>{
 
     const rows=text.trim().split("\n");
 
     const desktop=document.getElementById("tabelaDesktop");
     const mobile=document.getElementById("tabelaMobile");
+    const myTeam=document.getElementById("myTeamDesktop");
 
     desktop.innerHTML="";
     mobile.innerHTML="";
+
+    let piastData=null;
 
     rows.forEach((row,index)=>{
 
@@ -398,7 +593,32 @@ fetch(csvUrl)
 
         const piast=druzyna.toUpperCase().includes("PIAST");
 
-        /* ===== KOMPUTER ===== */
+
+        /* ==========================
+           ZAPISZ DANE PIASTA
+        ========================== */
+
+        if(piast){
+
+            piastData={
+                pozycja,
+                druzyna,
+                mecze,
+                punkty,
+                wygrane,
+                remisy,
+                porazki,
+                golePlus,
+                goleMinus,
+                bilans
+            };
+
+        }
+
+
+        /* ==========================
+           PEŁNA TABELA - DESKTOP
+        ========================== */
 
         desktop.innerHTML+=`
 
@@ -426,7 +646,10 @@ fetch(csvUrl)
 
         `;
 
-        /* ===== TELEFON ===== */
+
+        /* ==========================
+           PEŁNA TABELA - TELEFON
+        ========================== */
 
         mobile.innerHTML+=`
 
@@ -506,7 +729,111 @@ fetch(csvUrl)
 
     });
 
+
+    /* ==========================
+       WYRÓŻNIONY PIAST NA GÓRZE
+    ========================== */
+
+    if(piastData){
+
+        myTeam.innerHTML=`
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+
+                    <div class="team-name">
+
+                        <i class="bi bi-shield-fill-check"></i>
+
+                        ${piastData.druzyna}
+
+                    </div>
+
+                    <div class="mt-1 opacity-75">
+
+                        Twoja drużyna
+
+                    </div>
+
+                </div>
+
+                <div class="position">
+
+                    #${piastData.pozycja}
+
+                </div>
+
+            </div>
+
+
+            <div class="my-team-grid">
+
+                <div class="my-team-info points">
+
+                    <small>Punkty</small>
+
+                    <strong>${piastData.punkty}</strong>
+
+                </div>
+
+                <div class="my-team-info">
+
+                    <small>Mecze</small>
+
+                    <strong>${piastData.mecze}</strong>
+
+                </div>
+
+                <div class="my-team-info">
+
+                    <small>Wygrane</small>
+
+                    <strong>${piastData.wygrane}</strong>
+
+                </div>
+
+                <div class="my-team-info">
+
+                    <small>Remisy</small>
+
+                    <strong>${piastData.remisy}</strong>
+
+                </div>
+
+                <div class="my-team-info">
+
+                    <small>Porażki</small>
+
+                    <strong>${piastData.porazki}</strong>
+
+                </div>
+
+                <div class="my-team-info">
+
+                    <small>Gole</small>
+
+                    <strong>${piastData.golePlus} : ${piastData.goleMinus}</strong>
+
+                </div>
+
+                <div class="my-team-info">
+
+                    <small>Bilans</small>
+
+                    <strong>${piastData.bilans}</strong>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
 })
+
+
 .catch(error=>{
 
     document.getElementById("tabelaDesktop").innerHTML=`
@@ -548,4 +875,5 @@ fetch(csvUrl)
 </script>
 
 </body>
+
 </html>

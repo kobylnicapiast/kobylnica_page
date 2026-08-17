@@ -8,54 +8,130 @@ const MATCH_POSTER_API =
 const matchPosters = document.getElementById("matchPosters");
 const posterLoader = document.getElementById("posterLoader");
 
+
 if (matchPosters) {
 
-    // pokazujemy loader
+    // Pokazujemy loader
     if (posterLoader) {
         posterLoader.style.display = "block";
     }
 
     matchPosters.style.display = "none";
 
+
     fetch(MATCH_POSTER_API)
-        .then(response => response.json())
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Błąd odpowiedzi serwera.");
+            }
+
+            return response.json();
+
+        })
         .then(data => {
 
-            if (data.success && data.images && data.images.length > 0) {
+            if (
+                !data.success ||
+                !data.images ||
+                data.images.length === 0
+            ) {
 
-                // czyścimy kontener
-                matchPosters.innerHTML = "";
+                if (posterLoader) {
+                    posterLoader.style.display = "none";
+                }
 
-                // tworzymy obraz dla każdego pliku z Google Drive
-                data.images.forEach((poster, index) => {
+                console.log(
+                    "Brak plakatów w folderze Google Drive."
+                );
 
-                    const img = document.createElement("img");
+                return;
+            }
 
-                    img.src = poster.image + "&t=" + Date.now();
-                    img.alt = poster.name || "Plakat meczu";
-                    img.loading = index === 0 ? "eager" : "lazy";
 
-                    matchPosters.appendChild(img);
+            /* ===========================================
+               SORTOWANIE PLAKATÓW
+            =========================================== */
+
+            const posters = data.images
+                .map(poster => {
+
+                    const match =
+                        poster.name.match(/\d+/);
+
+                    return {
+                        ...poster,
+
+                        // Jeżeli nazwa ma numer:
+                        // 2.jpg -> 2
+                        // 10.jpg -> 10
+                        //
+                        // Jeżeli nie ma numeru,
+                        // dajemy bardzo dużą liczbę,
+                        // żeby takie pliki były na końcu.
+                        number: match
+                            ? parseInt(match[0], 10)
+                            : 999999
+                    };
+
+                })
+                .sort((a, b) => {
+
+                    return a.number - b.number;
 
                 });
 
-                // chowamy loader
-                if (posterLoader) {
-                    posterLoader.style.display = "none";
-                }
 
-                // pokazujemy wszystkie plakaty
-                matchPosters.style.display = "flex";
+            /* ===========================================
+               CZYŚCIMY STARE PLAKATY
+            =========================================== */
 
-            } else {
+            matchPosters.innerHTML = "";
 
-                if (posterLoader) {
-                    posterLoader.style.display = "none";
-                }
 
-                console.log("Brak plakatów w folderze Google Drive.");
+            /* ===========================================
+               TWORZYMY PLAKATY
+            =========================================== */
 
+            posters.forEach((poster, index) => {
+
+                const img =
+                    document.createElement("img");
+
+
+                img.src =
+                    poster.image +
+                    "&t=" +
+                    Date.now();
+
+
+                img.alt =
+                    poster.name ||
+                    "Plakat meczu";
+
+
+                // Pierwszy plakat ładuje się od razu.
+                // Reszta lazy.
+                img.loading =
+                    index === 0
+                        ? "eager"
+                        : "lazy";
+
+
+                matchPosters.appendChild(img);
+
+            });
+
+
+            /* ===========================================
+               POKAZUJEMY PLAKATY
+            =========================================== */
+
+            if (posterLoader) {
+                posterLoader.style.display = "none";
             }
+
+            matchPosters.style.display = "flex";
 
         })
         .catch(error => {
@@ -64,7 +140,10 @@ if (matchPosters) {
                 posterLoader.style.display = "none";
             }
 
-            console.error("Błąd pobierania plakatów:", error);
+            console.error(
+                "Błąd pobierania plakatów:",
+                error
+            );
 
         });
 
