@@ -266,7 +266,175 @@ section{
     line-height:1.8;
 
 }
+/* ===== NAPISY POD IKONAMI MENU ===== */
 
+.navbar-tools .tool-btn,
+.navbar-tools .persistent-link {
+    position: relative;
+}
+
+/* Teksty */
+#anthemBtn::after {
+    content: "Hymn";
+}
+
+.navbar-tools a[href="hymn.html"]::after {
+    content: "Tekst";
+}
+
+.navbar-tools a[href="menu.html"]::after {
+    content: "Menu";
+}
+
+/* Wygląd napisów */
+.navbar-tools .tool-btn::after,
+.navbar-tools .persistent-link::after {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+
+    margin-top: -2px;
+    opacity: 0.65;
+}
+
+/* =========================
+   DYMek HYMNU
+========================= */
+
+.anthem-button {
+    position: relative;
+}
+
+.anthem-hint {
+    position: absolute;
+
+    /* desktop */
+    top: calc(100% + 14px);
+    right: -10px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: max-content;
+    max-width: min(340px, calc(100vw - 20px));
+
+    background: #fff;
+    color: #111;
+
+    padding: 10px 15px 10px 8px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-8px) scale(0.95);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+}
+
+/* Maskotka */
+
+.anthem-mascot {
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+/* Strzałka */
+
+.anthem-hint::before {
+    content: "";
+
+    position: absolute;
+
+    top: -7px;
+    right: 16px;
+
+    width: 14px;
+    height: 14px;
+
+    background: #fff;
+
+    transform: rotate(45deg);
+}
+
+/* Pokazanie */
+
+.anthem-hint.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+
+/* =========================
+   TELEFONY
+========================= */
+
+@media (max-width: 576px) {
+
+    .anthem-hint {
+        /*
+         * Nie pozwalamy dymkowi wyjść
+         * poza ekran telefonu.
+         */
+        right: auto;
+        left: 50%;
+
+        transform: translate(-50%, -8px) scale(0.95);
+
+        width: auto;
+
+        max-width: calc(100vw - 20px);
+
+        padding: 8px 12px 8px 6px;
+
+        gap: 7px;
+
+        font-size: 12px;
+
+        white-space: nowrap;
+    }
+
+    .anthem-hint.show {
+        transform: translate(-50%, 0) scale(1);
+    }
+
+    .anthem-mascot {
+        width: 42px;
+        height: 42px;
+    }
+
+    .anthem-hint::before {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+}
 /* ===================================
    RESPONSYWNOŚĆ MENU
 =================================== */
