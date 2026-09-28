@@ -856,22 +856,36 @@ section{
     transform:translateY(-2px);
 
 }
-
-.mavvko-link {
-    background: none !important;
-    border-radius: 0 !important;
+/* Link MaVVko - bez stylu ikon social media */
+footer .copyright a.mavvko-link {
+    display: inline !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
     padding: 0 !important;
     margin: 0 !important;
-    display: inline !important;
-    color: inherit;
-    text-decoration: none;
+
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+
+    color: inherit !important;
+    text-decoration: none !important;
+
+    box-shadow: none !important;
+    transform: none !important;
 }
 
-.mavvko-link:hover {
-    background: none !important;
-    color: inherit;
+/* Efekt po najechaniu */
+footer .copyright a.mavvko-link:hover {
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+
+    color: inherit !important;
+    text-decoration: underline !important;
 }
- 
 /* ===================================
    RESPONSYWNOŚĆ
 =================================== */
